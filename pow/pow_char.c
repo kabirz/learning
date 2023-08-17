@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void reverse(char *str)
+static char *reverse(char *str)
 {
 	int len = strlen(str);
 	for (int i = 0; i < len / 2; i++) {
@@ -10,6 +10,7 @@ static void reverse(char *str)
 		str[i] = str[len - i - 1];
 		str[len - i - 1] = tmp;
 	}
+	return str;
 }
 
 static void pow_print(int base, int bit)
@@ -44,15 +45,12 @@ static void pow_print(int base, int bit)
 			val[j] = carr + '0';
 		}
 	}
-	reverse(val);
-	printf("%s\n", val);
+	printf("%s\n", reverse(val));
 	free(val);
 }
 
 int main(int argc, char *argv[])
 {
-	pow_print(2, 8);
 	pow_print(2, 2048);
-	pow_print(8, 2048);
 	return EXIT_SUCCESS;
 }

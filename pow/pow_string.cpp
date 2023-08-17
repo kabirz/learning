@@ -28,8 +28,6 @@ static void pow_print(int base, int bit)
 
 int main(int argc, char *argv[])
 {
-	pow_print(2, 8);
 	pow_print(2, 2048);
-	pow_print(8, 2048);
 	return EXIT_SUCCESS;
 }

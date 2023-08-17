@@ -5,7 +5,7 @@ int main() {
     mpz_t result;
     mpz_init(result);
 
-    mpz_ui_pow_ui(result, 2, 2024);
+    mpz_ui_pow_ui(result, 2, 2048);
 
     char* resultStr = mpz_get_str(NULL, 10, result);
     std::cout << resultStr << std::endl;
