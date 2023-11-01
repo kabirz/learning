@@ -7,6 +7,7 @@ static char *reverse(char *str)
 	int len = strlen(str);
 	for (int i = 0; i < len / 2; i++) {
 		char tmp = str[i];
+
 		str[i] = str[len - i - 1];
 		str[len - i - 1] = tmp;
 	}
@@ -15,21 +16,19 @@ static char *reverse(char *str)
 
 static void pow_print(int base, int bit)
 {
+	int bits = 1;
+
 	if (base >= 10) {
 		printf("base %d is too large, should be less than 10\n", base);
 		return;
 	}
-	char *val = calloc(bit, sizeof(char));
 
+	char *val = calloc(bit, sizeof(char));
 	if (!val) {
 		perror("calloc:");
 		return;
 	}
-
 	val[0] = '1';
-	for (int i = 1; i < bit; i++) {
-		val[i] = 0;
-	}
 
 	for (int i = 0; i < bit; i++) {
 		int carr = 0;
@@ -42,10 +41,11 @@ static void pow_print(int base, int bit)
 		}
 
 		if (carr > 0) {
+			bits++;
 			val[j] = carr + '0';
 		}
 	}
-	printf("%s\n", reverse(val));
+	printf("bits: %d, val: %s\n", bits, reverse(val));
 	free(val);
 }
 
